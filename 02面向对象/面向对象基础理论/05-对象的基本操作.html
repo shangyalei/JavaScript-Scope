@@ -1,0 +1,90 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>对象类型的数据--珠峰培训</title>
+    <style type="text/css">
+        li{ font-size:16px; font-weight:bold; line-height:2em;}
+        h3{ color:darkBlue}
+    </style>
+</head>
+
+<body>
+<h1>JavaScript中的对象类型</h1>
+<h3>复习</h3>
+<ol>
+    <li>JS的数据类型：number,boolean,string,object,function,undefined
+    </li>
+    <li>重点：number类型</li>
+    <li>重点：string类型</li>
+    <li>不同的数据类型之间的转换</li>
+</ol>
+<h3>对象类型的基本概念和操作</h3>
+<ol>
+    <li>对象类型的意义和定义</li>
+    <li>严格的对象类型：JSON</li>
+    <li>对象的读写</li>
+    <li>对象类型数据的遍历</li>
+</ol>
+<h3>面向对象的基础</h3>
+<ol>
+    <li>对象的数据是个广泛的概念</li>
+    <li>类的概念：对象的细分</li>
+    <li>具体的可操作对象：实例</li>
+    <li>typeof和instanceof</li>
+    <li>自已来定义一个类别</li>
+
+</ol>
+
+</body>
+</html>
+<script>
+    var i=0;//0值，i变量只保存一个值。
+    //对象可以存储好多好多键值对。其实就是好多松散的对集合。
+    //对象是数据，是以键值对为数据结构的数据。
+    var obj={
+        name:'tom',
+        age:'29',
+        height:'180cm',
+        0:'a',
+        1:'b',
+        2:'c',
+        fn: function () {
+        alert('我是对象obj的方法')}
+    };//JS中对象字面量表示法。
+    //alert(obj.name=='tom');//key value
+    //obj.fn();
+    //添加属性
+    //obj.width=100;
+    //alert(obj.width);
+    //若没有属性
+    //alert(obj.weight);
+    //obj.name==obj["name"]//数组表示法。
+    //判断对象是否存在某一个属性。使用in操作符。
+    //alert("name" in obj);//name要带引号。
+    //删除属性
+    //delete obj.name;
+    //alert(obj.name);
+    //读写对象属性的两种方式：obj.attr  obj["attr"]
+    //对象的属性也可以是数字，其实数组是从Object对象上改造而来，只不过属性在数组中叫索引(下标)，看不到。但是内部解析的
+    //时候，数组的下标还是会解析为字符串。说白了，数组中的属性就是用数字表示。
+    //数组一定是对象，因为是从Object对象演变过来的。
+    //JSON是严格的对象类型，所有的属性和属性值都必须用""包起来。JSON对象数据主要是为了数据交互。
+    var json={"name":"tom","age":20,"height":"180cm","a":"[1,2,3,4,5]"};
+
+    //对象的遍历
+    for (var attr in json) {//依次把属性提出来，赋值给attr。随着迭代，每次都会从新给attr赋值新的对象属性值。
+        alert(obj[attr]);
+        console.log(attr+":"+json[attr]);//此时，attr已经是变量了，随着遍历，会以此保存对象的属性名，所以不能打点，和使用引号。
+
+    }
+    //不是特殊的情况下，不用数字作为对象的属性。
+    //扩展属性：属性就是对于一个对象的抽象刻画。
+    //一个具体事物，总是有许许多多的性质与关系，我们把一个事物的性质与关系，都叫做事物的属性。
+    //事物与属性是不可分的，事物都是有属性的事物，属性也都是事物的属性。
+    //一个事物与另一个事物的相同或相异，也就是一个事物的属性与另一事物的属性的相同或相异。
+    //由于事物属性的相同或相异，客观世界中就形成了许多不同的事物类。
+    // 具有相同属性的事物就形成一类，具有不同属性的事物就分别地形成不同的类。
+
+
+</script>

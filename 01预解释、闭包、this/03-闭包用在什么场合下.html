@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #ul1 li{
+            height: 20px;
+            width: 100px;
+            overflow: hidden;
+            background: green;
+            margin:10px;
+            position: relative;
+
+        }
+    </style>
+</head>
+<body>
+
+<!--
+闭包用在什么场合
+1.保护变量
+2.协调异步代码
+3.只不过闭包我们天天在用，只不过我们没有意识到。
+
+
+-->
+
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <li>555</li>
+</ul>
+
+<script>
+
+    //1.保护变量
+    /*+(function () {
+        var oUl=document.getElementById('ul1');
+        var oLis=oUl.getElementsByTagName('li');
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick= function () {//异步代码：不按顺序实行的代码。
+                //alert(i+1);
+            }
+
+        }
+    })();*/
+    //上面代码出现了异步代码，可用作用域来解决，并且还可以保护变量。
+    /*+(function () {
+        var oUl=document.getElementById('ul1');
+        var oLis=oUl.getElementsByTagName('li');
+        for (var i = 0; i < oLis.length; i++) {
+            /!*(function (i) {
+                oLis[i].onclick= function () {//异步代码：不按顺序实行的代码。
+                    alert(i+1);
+                }
+            })(i);*!/
+
+            //还可以,主要隔离onclick后面的异步代码。
+            oLis[i].onclick=(function (n) {
+                return function () {
+                    alert(n+1);
+                }
+            })(i);
+        }
+    })();*/
+
+
+    //协调异步代码。
+    //每个小块每隔1s中，向右移100px
+
+    //同时移动
+    // var oLis=document.getElementById('ul1').getElementsByTagName('li');
+    //下面的写法是不行的，因为存在异步代码 window.setTimeout是天生的异步代码。
+    /*for (var j = 0; j < oLis.length; j++) {
+            window.setTimeout(function () {//setTimeout的执行本来是同步的，但是里面的参数是异步的，也就是在排计划。循环结束了，里面的函数参数还没有执行。
+                oLis[j].style.left=(j+1)*100+'px';
+            },(j+1)*1000);
+    }*/
+
+    //应该向下面这样写
+    var oLis=document.getElementById('ul1').getElementsByTagName('li');
+    for (var i = 0; i < oLis.length; i++) {
+        (function (i) {
+            window.setTimeout(function () {//setTimeout的执行本来是同步的，但是里面的参数是异步的，也就是在排计划。
+                // 循环结束了，里面的函数参数还没有执行。
+                // 什么时候执行，要看设置的执行时间，执行时间一到那么，函数参数才会执行。
+                oLis[i].style.left=(i+1)*100+'px';
+            },(i+1)*1000);
+        })(i);
+    }
+
+    /*下面的写法和上面的写法是一样的。
+    * window.setTimeout((function(i){
+    *   return function(){oLis[i].style.left=(i+1)*100+"px";}
+    * })(i),(i+1)*1000);
+    *
+    *
+    * */
+
+
+    //检测程序执行时间
+    var d=new Date();
+    for(var k=0;k<10000;k++){
+
+    }
+
+    alert(new Date-d);
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

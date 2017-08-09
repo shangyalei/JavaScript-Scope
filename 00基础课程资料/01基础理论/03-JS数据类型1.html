@@ -1,0 +1,131 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript中的数据类型</title>
+    <style type="text/css">
+        li{ font-size:16px; font-weight:bold; line-height:2em;}
+        h3{ color:darkBlue}
+    </style>
+</head>
+
+<body>
+<h1>JavaScript中的数据类型</h1>
+<h3>一、JS数据类型概述</h3>
+<ol>
+    <li>JS的数据类型：number,boolean,string,object,function,undefined
+    </li><li>
+    判断类型的运算符：typeof</li><li>
+    值类型：number,boolean,string</li><li>
+    对象类型：object</li><li>
+    特殊类型：function</li><li>
+    标识性的数据类型：undefined</li><li>
+    标识性的数据:null</li>
+</ol>
+<h3>二、number类型的关键知识点</h3>
+<ol>
+    <li>什么是number类型</li>
+    <li>不讲理的数</li>
+    <li>其它类型和number类型做运算
+        <ol>
+            <li>加减乘除运算中的自动类型转换</li>
+            <li>强制把其它类型转化为number的方法:Number,parseInt,parseFloat</li>
+            <li>number类型做逻辑运算</li>
+        </ol>
+    </li>
+    <li>什么情况下会产生NaN</li>
+    <li>NaN在做比较（逻辑运算）时的特殊性</li>
+
+</ol>
+<h3>String方法</h3>
+<ol>
+    <li>什么是string类型</li>
+    <li>字符字面量：\n,\t,\b</li>
+    <li>把其它类型转换为字符串：toString方法。（可以带参数）</li>
+    <li>String类上丰富的方法（讲常见的）</li>
+    <li>String这个包装类（高程第119页）</li>
+</ol>
+</body>
+</html>
+<script>
+    /**
+     * 预解释：
+     * 当解析器，解析代码的时候，会把带var，function关键的代码，先提前解析出来，占个位置。
+     * 带var关键字的是预声明（先开辟空间，占个位置，没赋值），在声明一个变量的时候，不知道变量的类型，在赋值的时候才确定变量的类型。
+     * 带function关键字的才是真正的预解释。声明+赋值。
+     * 我们把随着代码的执行才能确定变量类型的语言称为弱类型语言。
+     * 一个没有赋值的变量，本身保存一个值就是undefined。
+     *
+     */
+
+
+
+    //alert(n);
+    //fn();
+    //alert(fn);
+    var n=33;//在声明一个变量的时候，不知道变量的类型，在赋值的时候才确定变量的类型。
+    //注意：变量的声明，和变量的定义
+    //三部：
+    var i;//声明，预解释。先开辟空间。
+    i=3;//定义。和开辟的空间建立联系。
+    var i=3;
+    function fn(){
+        alert(3);
+    }
+    var str="bac";
+    var b=true;
+    var obj={name:'tom',age:'29',gender:'true'};
+    var ary=[];
+    //alert(typeof n);
+    //用typeof测试的结果弹出的类型分别是："string","number","object","function","boolean";
+    //值类型的只能存储一个值，而对象类型可以把基本类型的所有的类型给复合在一起。
+    var a = 88 * "abcd";
+    //alert(a);//NaN not a number的缩写。
+    var bool = 88 + "abcd";
+    //alert(bool);//+号在JS中有两种运算：如果两个数用加号是数学运算。否则是字符串拼接。
+    //alert(true+99+"bacd");//运算顺序是从左向右
+    //用加号运算符，运算boolean和number，true是1，false是0；
+    //alert(true+"bacd");
+    var obj2={};
+    //alert('abcd'+obj2);//都会调用object.toString(),先把对象转化为字符串在运算;
+    //通常调用obj2.toString();的结果是"[object Object]",第一个object是对象类型，第二个是所属类。
+    var ary2=[];//先调用a.toString();
+    //alert('abcd'+ary2);//由于ary2是一个空数组，所以调用toString()的结果是空字符串，所以运算结果还是'abcd'。
+    var ary3=[1,2,3,4,5];
+    //alert('abc'+ary3);
+    //JS中toString()是技巧性非常强的方法。
+    //各种数据类型在做+运算的时候的技巧，也就是拼接。
+    //boolean-->number--->string<---object;拼接的时候也就是其它类型先转化为字符串，然后在拼接。
+    //alert(true+obj2);
+    var na=99/'abcd';
+    //alert(na);//NaN,它转换数字时，转换不过来。
+    //alert(typeof na);//number  一定要记住NaN是从哪儿来的。
+    var num=parseInt('33.4px');
+    //alert(num);
+    //alert(typeof num);
+    var num2=parseFloat('22.4px');
+    //alert(num2);
+    //alert(typeof num2);
+    var num3=parseFloat('a22.5px');
+    //alert(num3);
+    //alert(typeof num3);
+    //什么情况下会得到NaN?
+    //NaN是number类型里特特殊值，当做数学运算失败的时候，或其他数据类型转换为number类型失败的时候，会得到NaN。
+    //alert(Number("2222"));//Number()方法比parseInt()是把整数部分提取出来。
+    // 和parseFloat()把小数部分提取出来。要弱一些，要求必须全部是数字才可以。
+
+
+    //number做逻辑运算的规律。
+    var num4=0;
+    //alert(!num4);//先转换为布尔值，然后在取反。
+    //在number数据类型中，除了0和NaN，其它的数都为true。
+    //alert(!!num4);
+    //alert(Boolean(num4));
+    var num5=parseInt('abcd');
+    if(num5){
+
+    }
+    alert(num5==num5);//NaN无论和什么数据去做比较，都是false。
+
+
+</script>

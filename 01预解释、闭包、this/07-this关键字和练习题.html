@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+this是什么？
+1.this是content，中文翻译成上下文，我平生最恨的词汇之一。
+2.是指一个行为发生的主体
+3.也就是说，这个行为是谁发生的，谁执行的就是谁。
+4.比如说吃饭这个行为，谁在吃饭，那吃饭的方法里面的this就是谁。
+
+
+
+-->
+
+<script>
+    //主要考试：作用域闭包、预解释、this关键字。
+    //注意：下面的题里有number要分清：
+    //1.全局的number;2.obj的属性Number;3.匿名方法运行的那个闭包里的number；
+
+    var number =2;//window.number=2;
+    //匿名函数运行完后，全局的number就是4了。
+
+
+    //下面那个obj里的匿名函数相当于：
+    var fun=(function () {//匿名函数里的this都是window。
+        this.number*=2;
+        number=number*2;//注意这是个坑，可以console.log(number)一下；这个number没有意义，这个number是谁，那要看这个作用域里面有没有var关键字声明的变量number。
+        //实际上，这会儿的number还是undefined。所以没有意义。
+        var number=3;//注意这儿的number是要预解释的。
+        return function(){
+            this.number*=2;//这会儿的this是谁还不知道。
+            number*=3;//number是谁，定义的时候就知道了，按照作用域链来。
+            alert(number);//每次函数运行时，会弹出来。
+        }; //这个匿名方法返回这个函数，fn1最终就是这个函数。
+    })();//这个匿名函数是一个闭包。
+
+
+
+    //一切自运行函数或前面没有点的调用的函数里的this都是window。
+
+
+    var obj={
+        number:4,//obj.number=4;
+//        fn1:(function () {//匿名函数里的this都是window。
+//            this.number*=2;
+//            number=number*2;//注意这是个坑，可以console.log(number)一下；
+//            var number=3;//注意这儿的number是要预解释的。
+//            return function(){
+//                this.number*=2;
+//                number*=3;
+//                alert(number);//每次函数运行时，会弹出来。
+//            }; //这个匿名方法返回这个函数，fn1最终就是这个函数。
+//        })()//这个匿名函数是一个闭包。
+        fn1:fun
+    };
+
+    var fn1=obj.fn1;//此时他们两指向同一个内存地址。
+    alert(number);//4
+    fn1();//8//全局的number已经是8了,并且弹出9；
+    obj.fn1();//obj.number=4 *=2是8；弹出27；
+    alert(window.number);//8
+    alert(obj.number);//8
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

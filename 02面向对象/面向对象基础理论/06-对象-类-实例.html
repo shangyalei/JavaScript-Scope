@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象-类-实例</title>
+</head>
+<body>
+
+<script>
+    //只要是对象，就符合复合值的概念。
+    //对象的自定义属性是非常常用的编程技术。
+    //变量和属性其实原理一样！
+    var obj={name:" ",age:'29'};//最原始的对象类型，没有给它分类，没有其他意义，它就是起一个存储一些值的。
+    //其这也是所有对象分类的原型。所有的对象类型，说到底都是它。
+    //document;//对象类型里面细分的文档对象类型
+    //document.body;//对象类型里面细分的元素对象类型类
+    //document.getElementById();
+    //document["getElementById"]();
+    //window;//对象里面细分的浏览器对象类型
+    //document.documentElement;//对象里面细分的元素类型对象类型。
+    //document["body"];//对象类型里面细分的元素对象类型。
+    document.aabb=33;
+    var aabb=33;
+    //alert(document.aabb);
+    //alert(aabb);
+    //alert(window.aabb);
+    //alert(window["aabb"]);
+    //属性是变量的另外一种存在方式，或者是，变量是属性的另外一种存在方式。一个人有两种生活方式。
+    //属性和变量可以通用。
+
+    //数组也是对象
+
+    var a=[1,2,3,4,5];
+    //a;//对象类型里面细分的数组对象类型。
+    function say() {//对象类型里面细分的函数对象类型。它首先是对象类型，其次它才是函数类型。
+        console.log("hello world");
+    }
+    say.aabb=33;
+    //alert(aabb);
+
+    //以上所有的对象类型都有一个共同的特点：都有自己的属性和方法，并且我们可以不断的扩展方法和属性。
+    //1.它们本身存储着好多信息(键和值)。
+    //2.我们还可以给它们扩展新的键和值(自定义属性)。
+    //不同点：虽然它们都叫对象类型数据，但是表示的意义有区别，也就是说它们被分类了。
+
+    //其实对象类型数据是一个很笼统的概念。它是有不同的属性来表达出来。所以需要去细分。
+    //Object----> 类的概念：就是对笼统的万事万物的一个细分。
+    //所以就要了JS中的内置类：Object--->Array--->Date--->RegExp
+    //最原始的对象类型(Object类型)，只是提供了一种基本的数据格式，或者叫数据的载体。它除了添加数据，删除数据
+    //和遍历数据，它就没有其他的比较复杂的特殊方法了。所以才有了Array类。
+    //Array类规定用了用[]来表示，并且["a","b","c"]<----->{0:"a",1:"b",2"c"}给你做了对应。也可以看出
+    //Array类是在Object的基础上演变而来的。其数据格式无论怎样变化，还是Object的数据格式。也就省略了写属性，
+    //因为它会自动的添加属性。并且也给数组类添加了许多灵活的内置方法。
+    var ary=[1,2,3,4];
+    var result=ary.splice(1,2,"x","y","z");
+    //alert(result);
+    //alert(ary);
+
+    //说对象，海里去了，我们操作对象，只能操作一个对象。
+    //对象--类---实例
+    //实例是我们具体操作的一个数据。
+    //类是用来描述数据的，数据的一种载体。对象是用来封装数据的。
+    function Person(){
+        this.name=name;
+        this.height=50;
+        this.weight="3.5KG";
+        this.eat=function (){};
+        this.cry=function(){};
+
+    }
+
+
+    var rose = new Person();
+
+    //function：首先是一个方法（函数）,看你怎样去用了，十分灵活。函数是JS中的一等公民。十分特殊。
+    //Person有三个身份，1.对象类型的数据 2.是一方法  3.是一个类。
+    //Person();这样调用方法。
+    //new Person();类
+
+    //判断对象是哪个类的实例用instanceof  instance是“实例”的意思。
+    alert(rose instanceof Person);
+    alert(rose instanceof Array);
+    alert(rose instanceof Object);
+    alert(rose instanceof Object);
+    alert(typeof null);
+    alert(null instanceof Object);
+    alert(typeof  undefined);
+    alert(undefined instanceof Object);
+    //new 就是一个普通的运算符，就是创建一个新的实例。就像家里来了新的客人一样。
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

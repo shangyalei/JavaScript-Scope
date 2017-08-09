@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+ 1.想获取时间就用时间类，Date类。要new一下
+ 2.所创建的实例会有很多内置的方法。
+ -->
+
+<div onclick="stopClock()" style="width: 450px; height: 2em; line-height: 2em; background: red;
+color: #ffffff;font-weight: bold; margin: 0 auto; text-align: center;"  id="div1"></div>
+
+
+
+
+<script>
+    //var t = new Date();
+//    alert(t.getDate());//日期  返回的是Date对象中的月份中的天数（1-31）
+//    alert(t.getDay());//周几   返回的是Date对象中的星期天的天数(0-6)
+//    alert(t.getFullYear());//年返回Date对象中的四位数年份
+//    alert(t.getMonth());//月   返回Date对象中的月份数（0-11）
+//    alert(t.getHours());//时   返回Date对象中的小时数（0-23）
+//    alert(t.getMinutes());//分 返回Date对象中的分钟数（0-59）
+//    alert(t.getSeconds());//秒 返回Date对象中的秒数（0-59）
+//    alert(t.getMilliseconds());//毫秒 返回Date对象中的毫秒数（0-999）当前一秒钟的第多少毫秒。
+//    alert(t.getTime());//   返回Date对象的时间戳表示法（毫秒表示）从1970年到现在一共有多少毫秒。
+//    //alert(t.getYear());//   返回Date对象中的年份（真实年份减去1900）不建议用。
+
+    //var ti = new Date('2008-08-09')带参数是以参数为准。也就是说，你的客户端是什么时候打开的，new什么时候运行的，这个就一次为准。
+    //
+//案例时钟
+    var timer=null;
+    function clock() {
+        var t=new Date();
+        var 年=t.getFullYear()+"年";
+        var 月=t.getMonth()+1+"月";
+        var 日=t.getDate()+"日";
+        var 周="周"+t.getDay();
+
+        var 时=t.getHours()+"时";
+        var 分=t.getMinutes()+"分";
+        var 秒=t.getSeconds()+"秒";
+        var 毫秒=t.getMilliseconds()+"毫秒";
+
+
+//      现在的时间是
+
+        var currentTime=年+月+日+时+分+秒+毫秒;
+
+//      插入页面
+        document.getElementById('div1').innerHTML=currentTime;
+        timer=window.setTimeout(clock,1000);//使用setInterval的时候不能放在方法内部，否则不断调用会导致内存溢出，从而浏览器挂掉。33
+    }
+    clock();
+    function stopClock(){
+        window.clearTimeout(timer);//让定时器停下来。
+    }
+
+    //window.setInterval(clock,1000);
+
+    //若想让时钟像电子表一样不停的走需要学习两个方法。
+    //1.window.setInterval(clock,400)//表示每隔400毫秒运行一次clock这个方法，永不停止。
+    //2.window.setTimeout(clock，400)//隔400毫秒后把clock方法运行一次，然后就结束。
+    //这两个方法的参数是一样的。里面不能加括号，加括号就变成了方法的返回值了。
+    //其实它们也是一个循环，只不过这个循环中间有间隔。
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="div1" style="width: 300px; height: 300px; background:red;"></div>
+
+<script>
+    //需求：如果是red,则变成blue,如果blue,则yellow,如果是yellow,则green,如果green,
+    //则black,如果black,则red;
+
+    var oDiv=document.getElementById('div1');
+
+    oDiv.onclick=function(){
+
+        if(oDiv.style.background=='red'){
+
+            oDiv.style.background='blue';
+
+        }else if(oDiv.style.background=='blue'){
+
+            oDiv.style.background='yellow';
+
+        }else if(oDiv.style.background=='yellow'){
+
+            oDiv.style.background='green';
+
+        }else if(oDiv.style.background=='green'){
+
+            oDiv.style.background='black';
+
+        }else if(oDiv.style.background=='black'){
+
+            oDiv.style.background='red';
+        }
+    };
+
+
+    //优化：
+    oDiv.onclick=function(){
+
+        var sColor=oDiv.style.backgroundColor;
+
+        if(sColor=='red'){
+
+            oDiv.style.background='blue';
+            //sColor='blue';赋值不能这样，因为sColor保存的是一个字符串，也就是值类型的不是引用类型的所以改变
+            //sColor的值影响不了oDiv对象的属性值。
+
+        }else if(sColor=='blue'){
+
+            oDiv.style.background='yellow';
+
+        }else if(sColor=='yellow'){
+
+            oDiv.style.background='green';
+
+        }else if(sColor=='green'){
+
+            oDiv.style.background='black';
+
+        }else if(sColor=='black'){
+
+            oDiv.style.background='red';
+        }
+    };
+
+
+    //使用switch语句  的条件是===全等的比较。if语句采用的比较有含有 数据类型转换。
+
+    oDiv.onclick= function () {
+        var sColor=oDiv.style.backgroundColor;
+        switch(oDiv.style.backgroundColor){
+            case 'red':
+                oDiv.style.backgroundColor='blue';
+                break;
+            case 'blue':
+                oDiv.style.backgroundColor='yellow';
+                break;
+            case 'yellow':
+                oDiv.style.backgroundColor='green';
+                break;
+            case 'green':
+                oDiv.style.backgroundColor='black';
+                break;
+            case 'black':
+                oDiv.style.backgroundColor='red';
+                break;
+            default :
+        }
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

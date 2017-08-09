@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS入门-珠峰培训</title>
+    <style>
+        #div1{
+            height:150px;
+            margin:10px;
+            background: blue;
+            font-weight:bold;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<!--
+ 知识点：
+ 1.JavaScript是一种嵌入式语言，嵌入到网页里面，首先要写一对script标签。在script标签中写脚本，用于控制网页中的元素。
+ 一个网页里是可以由多个script脚本对的。
+ 2.document.getElementById("");在当前文档中（网页中），通过元素属性id的方式来获取一个元素。
+ 分析：
+    1）document:内置文档对象，也就是指当前的整个文档（网页），我们可以把当前的整个网页看做document对象。
+    2）.点表示从属关系，表示当前对象内部的属性或方法，多个点，以此类推。一级一级的从属关系。同时点也是一个运算符
+    多个点，会从左向右依次运算，并且上一次运算的结果直接参与下一次运算，直到最后一个点运算符为止运算结束，并把结果返回。
+    3）getElementById("");是一个方法，从属于document对象。
+ 3.innerHTML是文档对象的一个属性：表示元素对象内部的文本内容。它会把它的值内部的标签字符串标签转换成HTML标签。浏览器会对它进行解析。
+ 多个innerHTML赋值时后者会把前者给覆盖掉。
+ 4.在JS里面如果想描述一个字符串用单引号和双引号的方式。但是必须前后保持一致并成对出现。
+ 5.style也是文档对象的一个属性，用来给文档对象添加样式。
+ 6.每一标签名，在JS中都是一个具体的文档对象。它们有它固有的属性，例如 id class  style等等。
+ 7.W3C规定好的属性，被称为合法的属性，也就是说浏览器网页中自带的属性，在JS中，我们可以直接使用打点的方式，来操作这个属性。
+ 8.自定义属性,不是W3c规定的法定的属性,不能直接使用打点的方式来访问。如果访问就会出现undefined，以此来证明W3C没有定义这个属性。
+ 9.window是浏览器里面最高级的对象，所以可以省略掉不写。所有的操作肯定都是在window的下面进行操作的，它代表全局作用域。
+ 10.使用JS代码添加的样式，会把样式添加到行内。不会改变内嵌的和外联的样式。因为行内样是优先级比较高所以把它添加到行内。
+ style属性如果有多个单词组成也就是复合属性，第二个单词首字母要大写。
+ 11.window表示浏览器对象，document表示的是当前网页的文档对象，它们俩个都是内置对象，是不用定义可以直接拿来用的对象。
+ document.documentElement代表HTML元素对象，document.body代表body元素对象。
+ document是一个抽象的对象，像HTML、body是比较具体的对象。
+ 12.什么是JS表达式：能完成一个功能的一段脚本。每个表达式之间用分号分隔。不写分号，浏览器会自己判断分号所在的位置。费时间还不安全。
+
+
+
+
+ -->
+<div aaa="我是自定义属性" style="" class="myClass" id="div1">我是一个div</div>
+<ol>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+</ol>
+免费课目的：调整状态。拉起水平
+</body>
+</html><script>
+    document.getElementById("div1").innerHTML="我是由JS代码生成的文本！";
+    document.getElementById("div1").innerHTML="<a href='http:www.zhufengpeixun.cn'>珠峰培训</a>JavaScript";
+    alert(document.getElementById('div1').style.color);//访问的是行内样式，若没设置，结果为空字符串。
+    document.getElementById("div1").style.color="#fff";
+    document.getElementById("div1").style.backgroundColor="black";
+    alert(document.getElementById('div1').className);
+    alert(document.getElementById("div1").id);
+    alert(document.getElementById('div1').innerHTML);
+    alert(document.getElementById('div1').style.color);//利用JS设置样式后访问
+    alert(document.getElementById('div1').aaa);
+</script>
+<script>
+
+    //总结：
+    /*变量：用更简短的代码存储一个过程，以及这个过程所产生的结果集。
+    使用JS代码添加的样式，会把样式添加到行内样式，不会改变内嵌的和外链的样式。
+    自定属性，不是合法合法属性，不能使用直接打点的方法操作。
+    W3C规定的属性，称为合法属性，是浏览器自带的属性，在JS中我们可以直接打点操作。
+    每一个标签，在JS中是一个具体的文档对象，都有自己继承自document的的属性和方法。document是一个抽象的文档对象，每一个标签都是一个具体的文档对象！
+    innerHTML是文档对象的一个属性，表示对象内部的文本内容，能解析HTML标签
+            .表示从属关系，.后面的从属于点前面的对象，点后面的是对象的方法和属性。
+    document是一个内置文档对象，也就是指当前的整个网页，我们可以把整个网页看做document对象
+    document.getElementById在当前文档中，通过元素的id属性获取一个元素
+    window表示的浏览器对象，document表示的是当前文档对象，它们两个都是内置文档对象，是不用定义可以直接拿来用的对象。
+     */
+
+
+
+
+
+
+
+    //JS是干什么的
+    //JS怎样来完成它的工作
+    //document.getElementById();这段表达式的执行要一级一级的才行，为了提高性能可以使用下面的方式。
+    var oDiv=document.getElementById('div1');//这样只需查找一次即可。
+    oDiv.style.color='white';
+    oDiv.style.backgroundColor='blue';
+    oDiv.innerHTML='我是JS动态生成的！';
+    //变量:用更简短的代码来存储以一个过程以及这个过程所产生的结果集。
+    //变量的命名规范：1.好记，好理解。
+    //获取整个li使用getElementsByTagName()方法，与获取id最主要的区别在于它获得的是组元素：
+    var oLis=document.getElementsByTagName('li');
+</script>
+

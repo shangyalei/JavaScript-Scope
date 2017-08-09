@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+//只要是定义一个类，就会有构造函数，就会有类的原型。
+//JS是基于原型链的继承。
+//constructor在原型中用处不大，它只是在原型链中起到反指的作用，了解即可。
+//创建一个类则会自动继承Object类。并且所创建类的原型上的__proto__属性指向Object.prototype。
+//所以每一个内置类的原型上的__proto__的都指向了Object类的原型(Object.prototype)，
+//所以Object类才会是基类。如果想让某个类继承可以通过改变其原型（prototype）上的__proto__的指向来继承。
+//每一个类上面都默认有一个prototype属性。
+//每一个类的实例都会默认有一个__proto__属性
+//以下方法为Object.prototype类原型上的方法。
+//1.hasOwnProperty判断是否为对象的私有属性。
+//2.toString();一般结果为"[object Object]"第一个为数据类型，第二个为所属类。
+//3.Object类上也不例外有prototype属性。
+//4.Object类的构造函数是写死了，无法修改，可以通过Object.prototype上扩展。
+
+//默认继承是原型链继承。
+
+//实例上的__proto__属性指向所属类的原型。
+
+
+
+-->
+
+<script>
+    function Person(name){//里面写的所有的代码只是描述，占有一定的空间，但没有运行之前不会有产生任何作用。
+        this.weight=7;
+        this.height=40;
+        this.skin='yellow';
+        this.gender='';
+        this.name=name;
+        this.age=0;
+    }
+
+    Person.prototype.eat=function(){
+        console.log('天生就会吃');
+    };
+    Person.prototype.cry=function(){
+        console.log('天生就会哭');
+    };
+
+    //FE（前端工程师）是Person类子类。
+    function FE(){
+
+
+    }
+
+    FE.prototype=new Person();//继承方式 FE.prototype变成了Person类的一个实例。
+    FE.prototype.writeCss=function(){
+      console.log('我已经掌握了写CSS的技术');
+    };
+
+    FE.prototype.writeJS=function(){
+      console.log('我已经掌握得了写JS的技术');
+    };
+
+    var tom=new FE();
+    tom.writeCss();
+    var rose=new FE();
+    var jack=new FE();
+    jack.eat();
+
+
+
+    var Person1=new Person("小明");
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

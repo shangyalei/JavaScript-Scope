@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var ary=[1,2,3,4];
+    //像这样定义一个方法，它就会有好多的方法，为什么？因为都定义在Array.prototype
+    alert(ary);//"1,2,3,4";为什么？因为隐式调用了数组的toString();
+    //原型上的方法，一般都使用this来操作当前的实例。也就是表示当前实例。
+    Array.prototype.toString=function(){
+        return this.join("++");
+    };
+    alert(ary);
+    console.log(ary);//是把某个对象的详细结构输出在控制台。
+
+    //给你一个数组，共m项，从m项中随机取出n项，n<m
+
+    var m=100;
+    var n=20;
+    function random(min,max){
+        return Math.floor(Math.random()*(max-min)+min);
+    }
+
+    //random(0,100);//大于等于0，小于100;
+    var a=[];
+    for(var i=0;i<100;i++){
+        a.push(i);//a里面保存的是说索引值，不是数据项。
+    }
+    var result=[];
+    for(var j=0;j<20;j++){
+        var k=random(0, a.length);
+        result.push(k);
+        a.splice(k,1);
+    }
+
+    //随机提取数据项。
+    Array.prototype.random=function(n){
+        //在当前执行这个random方法的实例中，随机去掉n个数据，并且这些随机去掉的值保存在一个数组里返回。
+        var result=[];
+        for(var j=0;j<n;j++){
+            //大于等于0，小于this.length;的一个随机数。
+            var random=Math.floor(Math.random()*(this.length));
+            //var val=this.splice(random,1);
+            var val=this[random];
+            this[random]=this[this.length-1];
+            this.length=this.length-1;//数组的length的属性是可以读写的。
+            result.push(val);
+        }
+        return result;
+    };
+
+    var array=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+    var sum=array.random(7);
+
+    //作业:根据slice的功能,自己实现一个slice方法。
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

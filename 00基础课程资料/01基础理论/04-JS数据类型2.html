@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript中的数据类型之String类型</title>
+</head>
+<body>
+
+
+<script>
+    //var str='';
+    var str2="abcd";
+    var str3=" ";
+    //换行
+    var str4="a\nb\nc\nd";
+    //alert(str4);
+    //放在HTML中不会换行,但是控制台中的代码是换行的，这个要明白。
+    document.body.innerHTML=str4;//HTML中的换行用<br>
+    //alert("a\\b");
+    //alert("a\"b");//高程第33页。
+    //alert(document.body.toString());
+    var n=9;
+    //alert(n.toString(2));//数类型上面的toString()里面加上参数，是按指定的进制转换。
+    var str5= new String("abcd");//包装类。
+    var str6="abcd";
+    //alert(str5==str6);//高程第119页。
+
+
+
+    //String类型常用方法
+    //把下面时分秒，劈开分别放到数组里面。
+    var strDate="2014-02-19 20:53:56";
+    var a=strDate.split(/[- :]/);//劈开的依据。
+    alert(a instanceof Array);
+    console.log(a);
+
+
+
+    var strUrl="http:www.zhufengpeixun.cn";
+    var start=strUrl.indexOf(".");//注意start是一个数。这点要明白。
+    var end=strUrl.lastIndexOf(".");
+    var str=strUrl.substring(start,end);//从第一个参数位置开始复制（包括第一个参数位置），到第二个参数之前的位置结束（不包括第二个参数的位置）。
+    //alert(str);
+    //去掉点
+    var str7=strUrl.substring(start+1,end);
+    //alert(str7);
+    //alert(strUrl.charAt(start));//取出指定位置的字符。
+    //alert(strUrl.indexOf('a'));//找不到返回-1。
+    var start2=strUrl.indexOf('peixun');//返回第一个字符的下标。
+    //alert(strUrl.charAt(start2));
+    //alert(strUrl.charCodeAt(start));//返回字符对应的ASCII码。
+    var str8='abcd';
+    //alert(str8.toLocaleUpperCase());
+    var str9='XYZ';
+    //alert(str9.toLocaleLowerCase());
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

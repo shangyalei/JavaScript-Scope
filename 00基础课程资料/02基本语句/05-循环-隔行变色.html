@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+
+<script>
+    var oLis=document.getElementsByTagName('ol')[0].getElementsByTagName("li");
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].style.margin='10px';
+        if(i%2==0){
+            oLis[i].style.backgroundColor='blue';
+        }else{
+            oLis[i].style.backgroundColor='purple';
+        }
+    }
+
+</script>
+
+</body>
+</html>

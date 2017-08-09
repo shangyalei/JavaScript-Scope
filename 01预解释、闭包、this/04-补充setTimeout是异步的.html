@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+
+
+<script>
+
+    function fn(){alert('fn');}
+    //第一点：window.setTimeout的执行时同步的，但是里面参数的执行就异步的，window.setTimeout的执行实际上就是在根据参数做计划。
+    window.setTimeout(fn,1000);
+    //第二点：下面这种情况，如果fn()执行后返回的是一个值，那就没有意义了，如果fn()函数的执行返回的是一个函数，那么，window.setTimeout会做计划。
+    window.setTimeout(fn(),1000);
+    //第三点：如果需要传参，应该这样写
+    function fn1(i){alert(i)}
+    window.setTimeout(function(){fn1(9);},1000);
+    //不应该这样写window.setTimeout(fn1(11),1000);这样写第一个参数，实际上是fn1(11)执行后的返回值。
+    //第四点：下面如果如果第二个参数为零下面哪个先执行。
+    window.setTimeout(function () {
+        fn1(9);
+    },0);
+    alert(14);
+    //因为第二个参数为0，说明它是马上执行，但是别忘记，window.setTime就是做异步代码的，所以即使是0，它也会先做计划然后在执行，所以下面那句先执行。
+
+
+    //第五点：重点加括号与不加括号的区别
+    function fn2(){return function(){alert('hello world')}}
+    window.setTimeout(fn2,1000);//这种是1s中之后运行fn2，运行结果得到返回值，也就是说把返回值当做第一个参数。
+    window.setTimeout(fn2(),1000);//这种是1s中之fn2的运行后的返回值函数运行，也就是function(){alert('hello world')}运行。
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

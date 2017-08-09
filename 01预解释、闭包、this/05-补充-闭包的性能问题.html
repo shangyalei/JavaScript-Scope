@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<ul>
+    <li>第一</li>
+    <li>第二</li>
+    <li>第三</li>
+    <li>第四</li>
+    <li>第五</li>
+</ul>
+
+<script>
+
+    var ele=document.getElementsByTagName('ul')[0].getElementsByTagName('li');
+    for(var i=0;i<ele.length;i++){
+        (function (i) {
+            ele[i].onclick=function(){alert(i);}
+        })(i);
+    }
+
+    //以上代码的运行会产生5个闭包作用域，但是关于闭包性能问题是个伪问题，现在的浏览器都是很高级的，所以基本可以忽略。
+    ele=null;
+
+
+</script>
+
+
+
+
+</body>
+</html>

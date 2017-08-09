@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    /*
+    * Math类（数学类）
+    * Math中文的为“数学”的意思，它提供数学计算方法和常量。
+    * Math是静态类，它的方法不用new关键字来产生新的实例，而是直接用Math.方法名()的方式来运行。
+    * 更可以把它看作为命名空间，也就是不用new，直接打点来操作
+    * Math类中常用的方法
+    *
+    *
+    * 1.Math四色五入类函数（这几个方法在讲动画的时候会用到）
+    * 1）Math.abs()--返回数字的绝对值
+    * 2）Math.ceil()--返回大于等于数字参数的最小整数（取整函数），对数字进行上舍入
+    * 3）Math.floor()--返回小于等于数字参数的最大整数，对数字进行下舍入
+    * 4）Math.round()--返回数字最接近的整数，四舍五入
+    *
+    *
+    *
+    * Math.random()--返回0和1之间的伪随机数（小数,既不会等于0，也不会等于1）（重要）
+    *
+    *
+    * 2.Math最大最小类函数
+    * 1）Math.max()--返回数个数字中较大的值
+    * 2）Math.min()--返回数个数字中较小的值
+    *
+    * */
+
+//    alert(Math.ceil(1.111));//ceil本义是天花板的意思
+//    alert(Math.floor(1.999));//floor本义为地板
+//    alert(Math.random());
+//    alert(Math.random()*100);//0--100之间的随机数
+//    alert(Math.ceil(Math.random()*100));//1--100之间的随机数包含1和100
+
+
+//    需求：随机产生十行十列的div，并且每次刷新都有不同的颜色或者根据浏览器窗口的变化随机改变颜色或大小，不能出现滚动条。
+    function fn() {
+        document.body.innerHTML="";//防止覆盖
+        var nBwidth=document.documentElement.clientWidth||document.body.clientWidth;
+        var nBheight=document.documentElement.clientHeight||document.body.clientHeight;
+        var nBoxWidth=nBwidth/10;
+        var nBoxheight=nBheight/10;
+        var of=document.createDocumentFragment();
+
+        for(var row=0;row<10;row++){
+            for (var col= 0; col < 10; col++) {
+                var oDiv=document.createElement('div');
+                oDiv.style.height=nBoxheight+"px";
+                oDiv.style.width=nBoxWidth+"px";
+                oDiv.style.position="absolute";
+                oDiv.style.top=row*nBoxheight+"px";
+                oDiv.style.left=col*nBoxWidth+"px";
+                var r=Math.floor(Math.random()*256);//因为rgb颜色值是从0到255取值
+                var g=Math.floor(Math.random()*256);
+                var b=Math.floor(Math.random()*256);
+                oDiv.style.background="RGB("+r+","+g+","+b+")";
+                of.appendChild(oDiv);
+            }
+            document.body.appendChild(of);
+        }
+
+    }
+
+
+//    fn();//刷新产生div
+    window.onresize=fn;//当窗口发生变化时运行函数。
+
+
+
+</script>
+
+
+
+</body>
+</html>

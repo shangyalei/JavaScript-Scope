@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+
+对象---object---翻译中文为----物体
+“物体”不是孤立存在的，它有各种各样的属性---复合数据。
+一堆变量组成了对象。变量和属性是通用的。
+对象是数据，这个必须要清楚。把各种类型的变量数据合在一起。
+
+
+
+-->
+
+
+<script>
+    //孤立的变量数据
+
+    var name='rose';
+    var age=23;
+    var height=138;
+    var wight='130KG';
+    var gender='男';
+    function cry(){}
+    function fight(){}
+    function die(){}
+
+    //整合到一起的数据,一个综合的数据体。obj是一个载体，承载了很多数据。
+    //这就是对象类型的数据。
+    var obj={
+        name:'rose',
+        age:23,
+        height:138,
+        gender:'男',
+        cry:function () {},
+        fight:function () {},
+        die:function () {}
+    };
+    //以上的这种创建对象数据类型的方式是一种方式，叫单例模式。
+
+    var DOM={};
+    DOM.insertAfter=function(){};
+    DOM.prepend=function(){};
+    DOM.getIndex=function(){};
+    //以上形成一种命名空间，这种方式起到分类的作用。
+    //在JS中我都是以命名空间的方式来来表现的，在这个空间中保存一些相关的属性和方法。
+
+    //以上为基于对象。
+
+    //下面为面向对象
+    //1.工厂模式
+
+    //手工作业
+    var shirt={
+        material:'虎皮',
+        size:'XXL',
+        weight:'',
+        height:'',
+        width:''
+    };
+    var shirt1={};
+    var shirt2={};
+
+    //把作业流程标准化，批量生产。
+    function shirtFactory(material){
+        var obj = new Object(material);
+        obj.material=material;
+        obj.weight="";
+        obj.height="";
+        obj.width="";
+        obj.siz="";
+        return obj;
+    }
+
+    var shirt3=shirtFactory();//第一个机器
+    var shirt4=shirtFactory();//第二个机器
+
+    //这样生产出来的对象都是东西，但是东西多了，都叫东西就麻烦了。
+    //面向对象的第一个任务：解决数据生产的问题，用什么方式去生产。解决生产方式的问题。
+    //基于对象：就是说可以描述复杂的数据了。
+    //面向对象：我们不仅可以描述复杂的数据，还可以生产复杂的数据。
+
+
+    //常见的工厂模式
+    $("#div1");
+    document.querySelectorAll('div');
+    document.createElement("div");
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

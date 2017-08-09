@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function Person(name){//里面写的所有的代码只是描述，占有一定的空间，但没有运行之前不会有产生任何作用。
+        this.weight=7;
+        this.height=40;
+        this.skin='yellow';
+        this.gender='';
+        this.name=name;
+        this.age=0;
+    }
+
+    Person.prototype.eat=function(){
+        console.log('天生就会吃');
+    };
+    Person.prototype.cry=function(){
+        console.log('天生就会哭');
+    };
+
+    //FE（前端工程师）是Person类子类。
+    function FE(){
+
+
+    }
+
+    FE.prototype=new Person();//继承方式 FE.prototype变成了Person类的一个实例。这就是原型链继承。
+    //会先执行new Person(),因为new的运算符优先级比较高。
+    FE.prototype.writeCss=function(){
+        console.log('我已经掌握了写CSS的技术');
+    };
+
+    FE.prototype.writeJS=function(){
+        console.log('我已经掌握得了写JS的技术');
+    };
+
+    var tom=new FE();
+    tom.writeCss();
+    var rose=new FE();
+    var jack=new FE();
+    jack.eat();
+
+
+
+    var Person1=new Person("小明");
+
+
+    //JS中，prototype的作用是什么？
+    //答：每一个函数上都有一个prototype属性。当这个函数作为一个类在用的时候，它保存了这个类上的共享方法，解决每个
+    //实例相同方法的复用问题。
+
+    //在JS总，prototype和__proto__有什么异同。
+    //prototype是函数上的，__proto__是实例上的，但是它们指向同一个地址。
+    //什么叫原型链？
+    //其实就是总结一下实例上的方法运行时的查找过程。
+    //JS中的继承是怎么实现的？
+    //JS中的继承是通过原型链上基础实现的。不是基于原型，所以FE.prototype=Person.prototype大家都用一个原型了，这种继承方式不行。
+
+    Person.prototype;
+    Person.__proto__;//Person是Function类的实例,所以它有__proto__属性。
+    alert(Person.__proto__==Function.prototype);
+
+    //ie里面__proto__不让操作，给保护起来了。所以下面的继承法方式在IE中不行。
+
+    FE.prototype.__proto__=Person.prototype;//创建一个类则会自动继承Object类。并且所创建类的原型上的__proto__属性指向Object.prototype。
+    //所以每一个内置类的原型上的__proto__的都指向了Object类的原型(Object.prototype)，
+    //所以Object类才会是基类。如果想让某个类继承可以通过改变其原型（prototype）上的__proto__的指向来继承。
+
+
+
+
+    //第二借用构造函数继承。
+
+    function Teacher(name,age,degree){
+        //借用构造函数继承
+        //Person(name);//this
+        //当前Teacher这个函数的this就是Teacher的实例。
+        Person.call(this,name);
+        //call,aplly这两个方法是定义在Function.prototype上的。所有的Function的实例都可以使用function.prototype上的方法。
+        this.age=age;
+        this.degree=degree;
+
+    }
+    var T=new Teacher();
+    T.eat();
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

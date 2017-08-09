@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="text1" type="text"/>
+<input id="btn" type="button" value="确定"/>
+<script>
+    var oBtn=document.getElementById('btn');
+/*    oBtn.onclick= function () {
+        var oInput=document.getElementById('text1');
+        var val=oInput.value;
+        switch(val){//通过val得到的值都是字符串，所以case的时候别忘了加“”
+            case '1':
+                alert('数字1');
+                break;
+            case '2':
+                alert('数字2');
+                break;
+            default :
+                alert(typeof val);
+        }
+    };*/
+
+    //用if-else实现,下面的条件若使用全等则条件不会成立。
+    oBtn.onclick= function () {
+        var val=document.getElementById('text1').value;
+        if(val==1){
+            alert(1);
+        }else if(val==2){
+            alert(2);
+        }else{
+            alert(typeof val);
+        }
+    };
+
+
+    //综上所述：switch语句的判断条件是全等判断，if-else语句的判断条件则存在类型转换。
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

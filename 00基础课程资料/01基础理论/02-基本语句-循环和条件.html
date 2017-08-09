@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS入门-珠峰培训</title>
+</head>
+<body>
+<ol>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+</ol>
+<ol>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+    <li>基本JS语法</li>
+    <li>语句之循环</li>
+    <li>珠峰培训条件语句之复杂条件判断</li>
+</ol>
+<script>
+    var oLis=document.getElementsByTagName('ol')[0].getElementsByTagName('li');
+    //这样拿出来的是一组元素，那么怎样对它们进行操作呢？
+    oLis.item(0).innerHTML='我用JS改变第一个LI';
+    oLis.item(1).innerHTML='我用JS改变第二个LI';
+    oLis[2].innerHTML='我用JS改变第三个LI';
+    oLis[3].innerHTML='我用JS改变第四个LI';
+   // alert(oLis.item(0)===oLis[0]);
+    //alert(oLis.length);
+
+    //操作第二个ol里的li
+    //var oLis2=document.getElementsByTagName('ol').item(1).getElementsByTagName('li');//先限定范围，在查找。
+    var oLis2=document.getElementsByTagName('ol')[1].getElementsByTagName('li');//先限定范围，在查找。
+    //使用循环给li 添加样式。
+    for (var i = 0; i < oLis2.length; i++) {
+        oLis2[i].style.margin='10px';
+        var obj = oLis2[i];
+        //alert(i%2);
+        if(i%2==0){
+
+            obj.style.backgroundColor='purple';
+            //obj.style.margin='10px';
+        }else{
+            oLis2[i].style.backgroundColor='blue';
+            //oLis2[i].style.margin='10px';
+
+        }
+        //i%2?obj.style.backgroundColor='purple':obj.style.backgroundColor='blue';
+
+    }
+
+    /**
+     * 分析循环：
+     * 1）首先，你要知道你的循环从什么地方开始，然后初始化一个变量，如果是从零开始，那么i就等于0；
+     * 2）然后循环到什么地方结束。
+     * 3）使其不断循环的动力：i++
+     * 4）每一次循环做什么事情。
+     * 5）{}的作用是吧要做的事情一件一件的概括到一起，形成一个代码块。但它没有块级作用域，循环结束后，变量i的值是属于循环外的环境的。
+     * 6)%是取余数
+     *
+*/    var n=0;
+    var c=n++;//先把n复制给m，然后在自加1。
+    var m=++n;//先把n自加1，然后在赋值。
+//    alert(n);
+//    alert(c);
+//    alert(n);
+//    alert(m);
+//    alert(n);
+    //让purple   pink   green   orange 四种颜色循环。
+    for (var j = 0; j < oLis.length; j++) {
+
+        oLis[j].style.margin='10px';
+//        if(j%4==0){
+//            oLis[j].style.backgroundColor='purple';
+//        }else if(j%4==1){
+//            oLis[j].style.backgroundColor='pink';
+//        }else if(j%4==2){
+//            oLis[j].style.backgroundColor='green';
+//        }else if(j%4==3){
+//            oLis[j].style.backgroundColor='orange';
+//        }
+        switch(j%4){
+            case 0:
+                oLis[j].style.backgroundColor='purple';
+                break;
+            case 1:
+                oLis[j].style.backgroundColor='pink';
+                break;
+            case 2:
+                oLis[j].style.backgroundColor='green';
+                break;
+            default :
+                oLis[j].style.backgroundColor='orange';
+        }
+
+    }
+
+
+
+</script>
+</body>
+</html>

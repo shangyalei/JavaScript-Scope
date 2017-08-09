@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>1
+
+<div id="div1" style="width:200px; height:200px; background:red;"></div>
+<script>
+    //最基本的逻辑判断：
+
+
+    var oDiv=document.getElementById('div1');
+    oDiv.onclick=function(){
+        if(oDiv.style.background=='red'){
+
+            oDiv.style.background='yellow';
+        }else{
+            oDiv.style.background='blue';
+        }
+    };
+
+
+
+    var a=3;
+    var b=5;
+    if(a>b){
+        alert("a>b");
+    }else{
+        alert("a<=b");
+    }
+
+    //简写：
+
+    oDiv.onclick= function () {
+        oDiv.style.background=='red'?oDiv.style.background='yellow':oDiv.
+                style.background='blue';
+    };
+    //优化  三元运算符是有返回值的 =号的运算优先级是最低的，所以先比较，然后把比较的结果再赋值。
+    oDiv.onclick= function () {
+        oDiv.style.background=oDiv.style.background=='red'?'yellow':'blue';
+    };
+
+
+    //注意以上的判断取得成功，先决条件是：必须是行内样式。
+    //if-else语句：非黑即白
+</script>
+
+
+
+</body>
+</html>

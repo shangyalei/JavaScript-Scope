@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <style>
+        #div{
+            width: 100px;
+            height: 100px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div">hello world</div>
+
+<script>
+    //函数定义的方式
+    //function add(){}
+    //var fn=function(){alert("hello world");};
+
+
+    //函数定义和函数的运行是两个不同的概念。
+    //add;这只是对方法本身的一种描述，方法没有运行之前里面的变量，代码是不起作用的。
+    //add();后面加括号是运行，里面的代码才会起作用。
+
+
+    //函数运行的内存分配：
+    //1.函数没有运行之前，函数名也就是变量，存储在栈内存中。
+    //2.函数的描述的所有代码，也就是函数本身存储在堆内存中。
+    //3.当函数运行时，会新开辟一块空间。这块空间的叫活动对象。一般情况下，活动对象的声明周期是当函数运行
+    //结束时就销毁。所以它是有生命周期的，才叫活动对象。
+
+    //var obj=document.getElementById('div');
+    //obj.onclick=fn;
+    //事件绑定，有点像做计划。
+    //约某个帅哥吃饭
+    //function eat(){约某某吃饭};
+    //我.当明天晚上六点的时候=eat;
+    //当明天晚上六点的时候eat发生了。
+    //<div onclick="fn();" id="div">hello world</div>当写在HTML代码中，要加小括号，当浏览器解析的
+    //时候会转成JS代码。相当于div.onclick=new Function("fn");或则div.onclick=function(){fn;}
+    //所以要想运行要交小括号。即：div.onclick=function (){fn();}才能执行。
+    //var fn=new Function("alert(3)");这种方式相当于function fn(){alert(3);}
+
+
+
+    //参数和返回值的问题：
+
+
+    //function plus(a, b, c, d) {
+      //  var count=a+b+c+d;
+        //return count;//return关键字，只能出现在一个函数里，不许出现在函数外面；
+    //}
+    //函数里只要出现return,第一层的意思就是：碰到return，函数无条件退出。
+
+    //alert(count);//undefined
+    //函数在运行的时候，会形成一个私有的封闭的空间。
+
+    //在实际开发中，为了不让函数名发生冲突，一般会用下面的方式来运用函数。使用匿名函数，形成一个封闭的空间。外边的
+    //访问不到里面的变量，但是里面的变量可以访问外面的变量。它的作用就是形成一个私有的空间。
+    //;(function () {
+      //第一个括号表示先定义，第二个括号表示再执行。
+    //})();
+
+
+    //如果参数不确定，每一个函数都有一个内置对象arguments。
+    //arguments:类似于数组的对象，参数集合。
+    function add() {
+        alert(arguments.length);//打印参数的个数
+
+        //取出参数
+        for (var i = 0; i < arguments.length; i++) {
+            var obj = arguments[i];
+            console.log(obj);
+        }
+    }
+    //add(1,2,3,4,5);
+
+    //实现一个方法，让所有参数相加。
+    function sum() {
+        var count=null;
+        for(var i=0;i<arguments.length;i++){
+            count+=arguments[i];
+        }
+        return count;
+    }
+
+    //alert(sum(1,2,3));
+    //null是一种标示，标示什么都没有，而0则表示一个数的概念,自己定义一个方法，要所有可能性都考虑到。做人的原则。
+    //当没有找到的时候就要返回null;null另外在做数学元素的时候为0
+    var oP=document.getElementById('p');
+    alert(oP);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

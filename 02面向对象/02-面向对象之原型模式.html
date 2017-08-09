@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    //工厂模式的方法，生产出来的“东西”都是object类型的，是个笼统的数据类型。不便于数据的差异化。也就是无法进行实例识别。
+    //解决实例识别的问题：构造函数模式。
+
+    //模式就是形式的意思！
+
+    function Shirt(material){//构造函数
+        this.material=material;
+        this.weight="";
+        this.height='';
+        this.size='';
+        this.width='';
+        this.holdWarm= function () {
+            console.log("保暖");
+        };
+    }
+
+    var shirt1=new Shirt('虎皮');//1.用new关键字去执行一个函数，则这个函数就被当做一个类来使用，这个函数叫构造函数。这是JS的一种机制。
+    //2.创建一个实例，这个实例属于Shirt类型的对象。并且这个实例所属Shirt类。
+    //3.在以这个实例为上下文（content），运行Shirt这个函数。
+    //4.Shirt();上下文为window
+    //5.new Shirt();上下文为实例
+    //6.构造函数的作用是初始化。构造函数自动运行，new一下就运行了。
+
+    //shirt1.holdWarm();
+
+    //7.构造函数解决的是实例识别的作用，也就是说，它产生的对象是属于某一个类的实例。
+
+    var shirt2=new Shirt("");
+
+    alert(shirt1.holdWarm==shirt2.holdWarm);//引发出方法复用的问题。
+
+
+    //解决方法复用的问题：原型问题：
+
+    function Person(){
+        this.name="";
+        this.age="";
+        this.width="";
+        this.size="";
+        this.height="";
+        this.widght="";
+        this.speak= function () {
+            alert("hello world");
+        }
+
+    }
+
+
+    var Person1=new Person();
+    //1.创建Person类的实例
+    //2.把实例返回
+    //3.以此实例为上下文运行Person函数
+    //4.任何一个函数都会有一个prototype属性，但是它只有当函数当做类使用的时候才有意义。
+    //5.把所有的共享的方法都保存在此属性上，这个属性明显是对象类型的。
+    //6.定义在构造方法里的方法都是私有的方法。
+    //7.定义在类的原型的函数是公有的方法。
+    //8.带this的操作是实例的属性。
+    //9.不带this是在作用域中产生的一个变量。随着函数的运行完毕会销毁。
+    //10.作用域和上下文是不一样的。
+
+
+
+
+
+
+    Person.prototype.say= function () {
+        alert("good job");
+    };
+    var Person2=new Person();
+
+    alert(Person1.say==Person2.say);//有结果得知：原型模式解决的是类上的方法共享的问题。
+
+    //类上所有的方法，都要保存在原型上。构造函数也是类上的函数，所以天生的就会被保存在原型上。
+    //每一个函数的原型对象上面都有一个constructor 和__proto__属性。
+    //原型上的constructor属性指向所属类构造函数的内存地址，构函数名也是类名。
+    //每一个实例上面都有一个属性__proto__属性，指向所属类的原型。
+
+
+
+    //理解原型链：是JS中实现继承的基本机制。
+
+    //改变原型上的方法
+    Person.prototype.a=[1,2,3,4];
+    Person1.a[0]=99;//先查找，私有属性没有a属性则找到原型上的a属性。所以就改变了这个属性的值。
+    alert(Person1.a[0]);
+
+    Person1.a=null;//直接写，不存在查找原型的这个过程，多以就直接写到了私有属性上了。
+    alert(Person2.a);
+    //读的时候有一个查找的过程，写的时候没有，写的意思就是赋值的意思。如果私有上有不会去原型上找了。
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

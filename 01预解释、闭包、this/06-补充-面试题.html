@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预解释面试题</title>
+</head>
+<body>
+
+<script>
+
+    f=function(){return true};
+    g=function(){return false};
+
+    (function () {
+        if(g()&&[]==![]){
+            f=function f(){return false;};//修改全局f
+            function g(){return true;}//闭包私有的，和全局没关系。
+        }
+    })();
+
+    alert(f());//true还是false？
+    alert(g());//这个弹出什么，和那个闭包没一毛钱关系。
+
+
+    /*
+    * 闭包没有自闭症
+    * 1.保持个性--保护自己
+    * 2.同时还能和它人友好沟通--留好接口（通道）--参数
+    * 3.作用域在定义的时候就确定了。
+    * */
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
